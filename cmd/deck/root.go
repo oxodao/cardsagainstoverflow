@@ -9,7 +9,8 @@ var deckCmd = &cobra.Command{
 
 func Register(root *cobra.Command) {
 	deckCmd.AddCommand(listCmd)
-	deckCmd.AddCommand(importDeckCmd)
+	deckCmd.AddCommand(setDefaultCmd)
+	registerImportCmd()
 	registerDeleteCmd()
 
 	root.AddCommand(deckCmd)

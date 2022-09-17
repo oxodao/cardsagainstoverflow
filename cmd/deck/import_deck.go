@@ -13,10 +13,15 @@ import (
 
 var importDeckCmd = &cobra.Command{
 	Use:   "import",
-	Short: "import [deck_file.json]",
+	Args:  cobra.ExactArgs(1),
+	Short: "Import a deck from a deckfile",
 	Run: func(cmd *cobra.Command, args []string) {
-		if len(args) < 1 || len(args) > 1 {
-			cmd.Help()
+		selectedByDefault, err := cmd.Flags().GetBool("selected-by-default")
+		if err != nil {
+			fmt.Println("Failed to parse flag")
+			fmt.Println("THIS SHOULD NOT HAVE HAPPENED, CONTACT THE DEVS !")
+			fmt.Println(err)
+
 			os.Exit(1)
 		}
 
@@ -47,6 +52,10 @@ var importDeckCmd = &cobra.Command{
 			fmt.Println("Are you sure it's a deckfile ?")
 
 			os.Exit(1)
+		}
+
+		if cmd.Flags().Changed("selected-by-default") {
+			deck.SelectedByDefault = selectedByDefault
 		}
 
 		tx := orm.GET.Db.MustBeginTx(context.Background(), nil)
@@ -87,4 +96,10 @@ var importDeckCmd = &cobra.Command{
 
 		fmt.Println("Deck created")
 	},
+}
+
+func registerImportCmd() {
+	importDeckCmd.Flags().Bool("selected-by-default", false, "Select the deck by default in the web-ui")
+
+	deckCmd.AddCommand(importDeckCmd)
 }

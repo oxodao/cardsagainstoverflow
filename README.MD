@@ -77,6 +77,7 @@ In the meantime, if you are willing to commit to a painful task (Done it by hand
 {
     "name": "Cards against humanity: Scary Pack",
     "author": "Cards against humanity",
+    "selected_by_default": false,
     "white_cards": [
         { "text": "My white card", "is_black_card": false },
         { "text": "My white card 2", "is_black_card": false }
@@ -94,7 +95,7 @@ The format may seems a bit bizarre but there are two reasons it's done like this
 
 Finally, you can import them:
 ```sh
-$ cao deck import deckfile.json
+$ cao deck import [--selected-by-default=true|false] deckfile.json
 ```
 
 You can manage them from there:

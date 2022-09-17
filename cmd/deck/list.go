@@ -23,9 +23,16 @@ var listCmd = &cobra.Command{
 			os.Exit(1)
 		}
 
+		fmt.Println("Decks with a star are selected by default")
+		fmt.Println()
 		fmt.Println("== Available decks ==")
 		for _, deck := range decks {
-			fmt.Printf("\t- [%v] %v by %v (%v black / %v white)\n", deck.Id, deck.Name, deck.Author, deck.AmtBlackCards, deck.AmtWhiteCards)
+			selected := ""
+			if deck.SelectedByDefault {
+				selected = "*"
+			}
+
+			fmt.Printf("\t- [%v%v] %v by %v (%v black / %v white)\n", selected, deck.Id, deck.Name, deck.Author, deck.AmtBlackCards, deck.AmtWhiteCards)
 		}
 	},
 }
