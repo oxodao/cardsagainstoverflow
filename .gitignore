@@ -1,0 +1,2 @@
+decks/*
+!decks/fixture_deck*.json

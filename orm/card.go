@@ -22,3 +22,46 @@ func (c *Card) CreateCard(tx *sqlx.Tx, deck *models.Deck, card *models.Card) err
 
 	return row.Scan(&card.Id)
 }
+
+func (c *Card) GetCards(deckId int64, isBlackCard bool) ([]models.Card, error) {
+	rows, err := c.db.Queryx(`
+		SELECT id, text, is_black_card
+		FROM card
+		WHERE deck_id = $1
+		  AND is_black_card = $2
+	`, deckId, isBlackCard)
+
+	if err != nil {
+		return nil, err
+	}
+
+	cards := []models.Card{}
+	for rows.Next() {
+		card := models.Card{}
+		err = rows.StructScan(&card)
+		if err != nil {
+			return nil, err
+		}
+
+		cards = append(cards, card)
+	}
+
+	return cards, nil
+}
+
+func (c *Card) FillDeck(deck *models.Deck) error {
+	blackCards, err := c.GetCards(deck.Id, true)
+	if err != nil {
+		return err
+	}
+
+	whiteCards, err := c.GetCards(deck.Id, false)
+	if err != nil {
+		return err
+	}
+
+	deck.BlackCards = blackCards
+	deck.WhiteCards = whiteCards
+
+	return nil
+}
