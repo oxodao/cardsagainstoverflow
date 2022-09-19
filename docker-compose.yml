@@ -9,3 +9,11 @@ services:
       PGDATA: /var/lib/postgresql/data/pgdata
     volumes:
       - ./sql:/docker-entrypoint-initdb.d
+
+  frontend:
+    image: node:16-alpine
+    ports: [3050:3000]
+    working_dir: /app
+    command: ['ash', '-c', '[ ! -d node_modules ] && npm install; npm run dev']
+    volumes:
+      - ./frontend:/app

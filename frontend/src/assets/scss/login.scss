@@ -1,0 +1,45 @@
+.LoginForm {
+    border: 1px solid var(--accent-color);
+    border-radius: .5em;
+    padding: 1em;
+    background: #111;
+    display: flex;
+    flex-direction: column;
+    margin: 0 .5em 0 .5em;
+
+    &__Display {
+        display: flex;
+
+        flex-direction: row;
+        align-items: center;
+        justify-content: center;
+
+        padding: 0 0 .5em 0;
+
+        font-weight: bold;
+    }
+
+    input[id="username"] {
+        display: block;
+        margin-bottom: .5em;
+    }
+
+    input[id="room"] {
+        display: block;
+        margin-bottom: 1em;
+
+        text-transform: uppercase;
+
+        &::placeholder {
+            text-transform: none;
+        }
+    }
+
+    input[type="submit"] {
+        border: none;
+        background-color: var(--accent-color);
+        color: var(--dark-color);
+        padding: 1em;
+        font-weight: bold;
+    }
+}

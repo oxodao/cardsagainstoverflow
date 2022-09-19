@@ -15,6 +15,7 @@ It's a rewrite of a private one that was used during the lockdown in France in 2
 - [ ] Display mode (Just showing the game, if you are playing in the same room for example)
 - [ ] Admin tools (Room creator)
 - [ ] Re-joining a game (Lost connection, changing device mid-game, ...)
+- [ ] Translations
 - [ ] MSN Messenger's / WLM's Wizz
 
 Technical:
