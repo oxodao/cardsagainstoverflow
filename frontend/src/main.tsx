@@ -8,6 +8,8 @@ import Home from './pages/home';
 import Game from './pages/game';
 
 import './assets/scss/main.scss';
+import { AuthProvider } from './hooks/auth';
+import { DecksProvider } from './hooks/decks';
 
 const router = createHashRouter([
   { path: '/game/:room_id', element: <Game/> },
@@ -16,6 +18,10 @@ const router = createHashRouter([
 
 ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(
   <React.StrictMode>
-    <RouterProvider router={router}/>
+    <AuthProvider>
+      <DecksProvider>
+        <RouterProvider router={router}/>
+      </DecksProvider>
+    </AuthProvider>
   </React.StrictMode>
 )

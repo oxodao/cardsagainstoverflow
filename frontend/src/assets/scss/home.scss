@@ -11,4 +11,9 @@
         height: 3em;
         display: block;
     }
+
+    &__Login {
+        display: flex;
+        flex-direction: row;
+    }
 }

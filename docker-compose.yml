@@ -17,3 +17,5 @@ services:
     command: ['ash', '-c', '[ ! -d node_modules ] && npm install; npm run dev']
     volumes:
       - ./frontend:/app
+    extra_hosts:
+      - host.docker.internal:host-gateway

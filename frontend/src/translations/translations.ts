@@ -5,6 +5,7 @@ const resources = {
     en: {
         translations: {
             login: {
+                auth_title: 'Login',
                 remote_display: 'Remote display',
                 username: 'Username',
                 room_id: 'Room ID (Optional)',
@@ -15,6 +16,7 @@ const resources = {
     fr: {
         translations: {
             login: {
+                auth_title: 'Connexion',
                 remote_display: 'Affichage déporté',
                 username: 'Pseudo',
                 room_id: 'Code salle (Optionel)',

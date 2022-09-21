@@ -32,3 +32,8 @@ type Room struct {
 	Config       RoomConfig `db:"-" json:"config"`
 	State        RoomState  `db:"-" json:"state"`
 }
+
+func NewRoom() *Room {
+	// r := Room{}
+	return nil
+}
