@@ -71,7 +71,7 @@ server {
 }
 ```
 
-Now you can import your decks. As we are playing with the french `Blanc Manger Coco` version, we cannot share the files (Go buy the real one if you don't have it yet !). Later we'll probably provide Cards Against Humanity ones though as they are free.
+Now you can import your decks. Later we'll probably provide Cards Against Humanity ones as they are free.
 
 In the meantime, if you are willing to commit to a painful task (Done it by hand on 1300+ cards), you can build the deckfile yourself:
 ```json
